@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Over Engineered</title>
+    <link>https://blog.davidccunliffe.com/</link>
+    <description>Recent content on Over Engineered</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>© [David Cunliffe](https://blog.davidccunliffe.com)</copyright>
+    <lastBuildDate>Mon, 25 Nov 2024 21:53:45 -0500</lastBuildDate>
+    <atom:link href="https://blog.davidccunliffe.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Me</title>
+      <link>https://blog.davidccunliffe.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://blog.davidccunliffe.com/about/</guid>
+      <description>&lt;p&gt;Hi, my name is David Cunliffe. I have been interested in computers and software since I learned BASIC in the early 1990’s. I took up hobbyist computing and learned about software programming, hardware hacking, BBS’s, and this wonderful thing called electronic mail.&lt;/p&gt;&#xA;&lt;p&gt;After high school, I became interested in the newly commercialized Internet that promised to change the world. I started my first job working for AOL and CompuServe and have been in and out of IT since. I recently started to do consulting a few years back and web hosting in the early days of the Internet. The Internet has indeed changed the world since those early days in the 90’s. Along the way, I’ve worked for all manner of businesses as both an employee and a consultant, providing advice, mentoring, and software programming services. I have had a great time so far, and I am looking forward to what comes next. I hope the things that I post here help you with your journey.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Init</title>
+      <link>https://blog.davidccunliffe.com/posts/init/</link>
+      <pubDate>Mon, 25 Nov 2024 21:53:45 -0500</pubDate>
+      <guid>https://blog.davidccunliffe.com/posts/init/</guid>
+      <description>&lt;p&gt;Hey all this is my first blog post. The concept of this blog is to educate and show a glimpse of my day to day. I hope to produce content at least weekly to get started.&#xA;Will be covering different technology aspects centered around DevOps and Cloud Services. The other will be around general automation tools and services I use to gear up for an engagement.&#xA;If your interested in following along on other platforms.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

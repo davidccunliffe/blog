@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Over Engineered</title>
+    <link>https://blog.davidccunliffe.com/posts/</link>
+    <description>Recent content in Posts on Over Engineered</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>© [David Cunliffe](https://blog.davidccunliffe.com)</copyright>
+    <lastBuildDate>Mon, 25 Nov 2024 21:53:45 -0500</lastBuildDate>
+    <atom:link href="https://blog.davidccunliffe.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Init</title>
+      <link>https://blog.davidccunliffe.com/posts/init/</link>
+      <pubDate>Mon, 25 Nov 2024 21:53:45 -0500</pubDate>
+      <guid>https://blog.davidccunliffe.com/posts/init/</guid>
+      <description>&lt;p&gt;Hey all this is my first blog post. The concept of this blog is to educate and show a glimpse of my day to day. I hope to produce content at least weekly to get started.&#xA;Will be covering different technology aspects centered around DevOps and Cloud Services. The other will be around general automation tools and services I use to gear up for an engagement.&#xA;If your interested in following along on other platforms.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
