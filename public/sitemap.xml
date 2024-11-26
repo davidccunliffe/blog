@@ -2,21 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.davidccunliffe.com/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
   </url><url>
-    <loc>https://blog.davidccunliffe.com/posts/init/</loc>
+    <loc>http://localhost:1313/posts/init/</loc>
     <lastmod>2024-11-25T21:53:45-05:00</lastmod>
   </url><url>
-    <loc>https://blog.davidccunliffe.com/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2024-11-25T21:53:45-05:00</lastmod>
   </url><url>
-    <loc>https://blog.davidccunliffe.com/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2024-11-25T21:53:45-05:00</lastmod>
   </url><url>
-    <loc>https://blog.davidccunliffe.com/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url><url>
-    <loc>https://blog.davidccunliffe.com/series/</loc>
+    <loc>http://localhost:1313/series/</loc>
   </url><url>
-    <loc>https://blog.davidccunliffe.com/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
   </url>
 </urlset>
