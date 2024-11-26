@@ -10,18 +10,46 @@
     <lastBuildDate>Mon, 25 Nov 2024 21:53:45 -0500</lastBuildDate>
     <atom:link href="https://blog.davidccunliffe.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Init</title>
+      <link>https://blog.davidccunliffe.com/home/</link>
+      <pubDate>Mon, 25 Nov 2024 21:53:45 -0500</pubDate>
+      <guid>https://blog.davidccunliffe.com/home/</guid>
+      <description>&lt;p&gt;Hey all this is my first blog post. The concept of this blog is to educate and show a glimpse of my day to day. I hope to produce content at least weekly to get started.&lt;/p&gt;&#xA;&lt;p&gt;Will be covering different technology aspects centered around DevOps and Cloud Services. The other will be around general automation tools and services I use to gear up for an engagement.&lt;/p&gt;&#xA;&lt;p&gt;If your interested in following along on other platforms.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>About Me</title>
       <link>https://blog.davidccunliffe.com/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://blog.davidccunliffe.com/about/</guid>
-      <description>&lt;p&gt;Hi, my name is David Cunliffe. I have been interested in computers and software since I learned BASIC in the early 1990’s. I took up hobbyist computing and learned about software programming, hardware hacking, BBS’s, and this wonderful thing called electronic mail.&lt;/p&gt;&#xA;&lt;p&gt;After high school, I became interested in the newly commercialized Internet that promised to change the world. I started my first job working for AOL and CompuServe and have been in and out of IT since. I recently started to do consulting a few years back and web hosting in the early days of the Internet. The Internet has indeed changed the world since those early days in the 90’s. Along the way, I’ve worked for all manner of businesses as both an employee and a consultant, providing advice, mentoring, and software programming services. I have had a great time so far, and I am looking forward to what comes next. I hope the things that I post here help you with your journey.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Hi, my name is David Cunliffe. Welcome to my technical blog where I&amp;rsquo;ll be discussing various projects I&amp;rsquo;ve been working on over the years.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve worked for all sizes of companies, from small to medium business up to fortune 50 companies, ranging from DevOps deliveries up to full&#xA;blown architecture work designing large scale foundational systems within both AWS and GCP.&lt;/p&gt;&#xA;&lt;p&gt;My passion is was networking in technology for many years. I enjoy learning about virtualization technologies such as VMware, Proxmox, Docker, and my latest adventures have been within Kubernetes. I&amp;rsquo;ve worked work closely with on-premise tech for the first part of my technology career.&#xA;Over the last decade I&amp;rsquo;ve spent most of my time developing my cloud based infrastructure skills to aid in the virtual world.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Init</title>
-      <link>https://blog.davidccunliffe.com/posts/init/</link>
-      <pubDate>Mon, 25 Nov 2024 21:53:45 -0500</pubDate>
-      <guid>https://blog.davidccunliffe.com/posts/init/</guid>
-      <description>&lt;p&gt;Hey all this is my first blog post. The concept of this blog is to educate and show a glimpse of my day to day. I hope to produce content at least weekly to get started.&#xA;Will be covering different technology aspects centered around DevOps and Cloud Services. The other will be around general automation tools and services I use to gear up for an engagement.&#xA;If your interested in following along on other platforms.&lt;/p&gt;</description>
+      <title>Detailed Cloud and DevOps Experience report, 2008-</title>
+      <link>https://blog.davidccunliffe.com/cloud-experience/</link>
+      <pubDate>Tue, 12 Nov 2024 17:04:33 -0500</pubDate>
+      <guid>https://blog.davidccunliffe.com/cloud-experience/</guid>
+      <description>&lt;p&gt;This is a sampling of some of the projects I’ve completed in the past 10+ years.&#xA;Most of the following projects were done for large enterprises and Fortune 500 companies.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Designed and built a multiple foundational builds within AWS and GCP. Utilizing various Infrastructure as Code tools, in AWS prior to Landing Zone and Control Tower. I utilized Cloudformation Stacksets to deploy resources using a account factory developed with AWS Service Catalog. Later on utilizing CDK tooling such as Landing Zone Accelerator to perform the automation at scale in a centralized pipeline. In GCP I&amp;rsquo;ve leveraged tools such as Terraform to build out custom modules along with Python to develop organizational project builds with Zero Trust access via Workload Identity pools and pipelines.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hire Me</title>
+      <link>https://blog.davidccunliffe.com/hire-me/</link>
+      <pubDate>Tue, 12 Nov 2024 16:32:08 -0500</pubDate>
+      <guid>https://blog.davidccunliffe.com/hire-me/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;re looking for an AWS or GCP cloud consultant who has been in IT since 2008, ping me. I can help you with projects small, large and everything in between. Perhaps you just need to run an idea past a different set of ears and eyes.&lt;/p&gt;&#xA;&lt;p&gt;Hire me &lt;em&gt;if&lt;/em&gt; you&amp;rsquo;re looking for someone who is:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;an experienced pro who brings a diverse set of experiences to the table, and sees the big picture.&lt;/li&gt;&#xA;&lt;li&gt;an independent worker who takes initiative.&lt;/li&gt;&#xA;&lt;li&gt;detailed.&lt;/li&gt;&#xA;&lt;li&gt;organized.&lt;/li&gt;&#xA;&lt;li&gt;plans ahead.&lt;/li&gt;&#xA;&lt;li&gt;easy to get along and work with.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Don&amp;rsquo;t hire me &lt;em&gt;if&lt;/em&gt; you&amp;rsquo;re looking for someone who:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Authentication of Users &amp; Apps to Google Cloud for Local Workstation Development</title>
+      <link>https://blog.davidccunliffe.com/blog/2022-02-gcp-auth/</link>
+      <pubDate>Tue, 22 Feb 2022 17:45:18 -0400</pubDate>
+      <guid>https://blog.davidccunliffe.com/blog/2022-02-gcp-auth/</guid>
+      <description>&lt;p&gt;If you are developing code (on your workstation) to interact with the Google Cloud Platform (GCP) using either the Google Cloud SDK Command Line Tools (i.e. gcloud) and/or the Google Cloud Client Libraries, then you&amp;rsquo;ll need to authenticate first.&lt;/p&gt;&#xA;&lt;p&gt;This article was inspired by the excellent explanatory &lt;a href=&#34;https://codeburst.io/google-cloud-authentication-by-example-1481b02292e4&#34;&gt;how-to article created by John Tucker&lt;/a&gt;, and is essentially a &amp;lsquo;cheat-sheet&amp;rsquo; version for that how-to.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Note that this article does not cover how to authenticate when you or your proxy is inside GCP or in another environment.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Terraform Tips and Tricks</title>
+      <link>https://blog.davidccunliffe.com/blog/2021-10-terraform-tips-and-tricks/</link>
+      <pubDate>Fri, 01 Oct 2021 10:23:05 -0400</pubDate>
+      <guid>https://blog.davidccunliffe.com/blog/2021-10-terraform-tips-and-tricks/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;em&gt;Update, Feb 2019&lt;/em&gt;: Note that with the imminent release of Terraform v0.12, some of the advice, commands, etc. in this article may not apply or work any more.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Having used Hashicorp&amp;rsquo;s Terraform since 2016, I&amp;rsquo;ve collected a set of tips and tricks around developing and debugging Terraform code.&lt;/p&gt;&#xA;&lt;h2 id=&#34;version-pinning&#34;&gt;Version Pinning&lt;/h2&gt;&#xA;&lt;p&gt;Even at 4+ yrs old, Terraform is still not even at version 1.0. However, along the way even the minor releases have had major&amp;ndash;and many times breaking&amp;ndash;changes. For that reason, I&amp;rsquo;ve always strongly recommended that one pins their code to at least the minor version # (e.g. 0.11.x), and Terraform has a mechanism to do this. E.g.:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head><title>Terraform Tips and Tricks &ndash; Over Engineered</title>
+<meta name="description" content="Cloud Consultant">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="https://blog.davidccunliffe.com/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.davidccunliffe.com/css/risotto.css">
+<link rel="stylesheet" href="https://blog.davidccunliffe.com/css/custom.css">
+
+
+
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+      <li class="nomarker"><h1 class="page__logo"><a href="https://blog.davidccunliffe.com/" class="page__logo-inner">Over Engineered</a></h1></li>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.davidccunliffe.com/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item active" href="https://blog.davidccunliffe.com/blog/" title="Blogs">Blogs</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>Terraform Tips and Tricks</h1>
+    </header>
+    <div class="content__body">
+        <blockquote>
+<p><em>Update, Feb 2019</em>: Note that with the imminent release of Terraform v0.12, some of the advice, commands, etc. in this article may not apply or work any more.</p>
+</blockquote>
+<p>Having used Hashicorp&rsquo;s Terraform since 2016, I&rsquo;ve collected a set of tips and tricks around developing and debugging Terraform code.</p>
+<h2 id="version-pinning">Version Pinning</h2>
+<p>Even at 4+ yrs old, Terraform is still not even at version 1.0. However, along the way even the minor releases have had major&ndash;and many times breaking&ndash;changes. For that reason, I&rsquo;ve always strongly recommended that one pins their code to at least the minor version # (e.g. 0.11.x), and Terraform has a mechanism to do this. E.g.:</p>
+<pre tabindex="0"><code>terraform {
+  required_version = &#34;&gt;= 0.11.7, &lt; 0.12&#34; # any version from 0.11.7 up to, but not including 0.12
+}
+</code></pre><p>You should also pin your providers&rsquo; versions as well, although I&rsquo;ve found you can (and should) be more lenient and allow for anything within a major version (e.g. 2.x). E.g.:</p>
+<pre tabindex="0"><code>provider &#34;azurerm&#34; {
+  version         = &#34;~&gt; 1.2&#34;  # any non-beta version &gt;= 1.2.0 and &lt; 2.0.0
+}
+</code></pre><p>Additionally, you can also enforce a specific version of the TF binary to use in your code dir by using a  3rd-party tool called <a href="https://github.com/tfutils/tfenv">tfenv</a>. Don&rsquo;t procrastinate on this one as it only takes minutes to set up.</p>
+<h2 id="aliases">Aliases</h2>
+<p>If you&rsquo;re a regular Terraform user, then you&rsquo;ll want to save yourself some keystrokes and create some shell aliases. Here are mine:</p>
+<pre tabindex="0"><code>alias tf=&#39;terraform&#39;
+alias tfa=&#39;time terraform apply &amp;&amp; say &#34;Terraform has completed&#34;&#39; # The &#39;say&#39; command may not be available on all *nix systems.
+alias tfd=&#39;terraform-docs&#39;  # &#39;terraform-docs&#39; command generates documentation from your TF code
+alias tfg=&#39;terraform graph -draw-cycles | dot -Tpng &gt; graph.png; open graph.png&#39;
+alias tfi=&#39;terraform init --upgrade&#39;
+alias tfp=&#39;echo running terraform get update then plan; terraform get -update &amp;&amp; terraform plan -out /tmp/zplan&#39;
+alias tfv=&#39;terraform validate&#39;
+</code></pre><h2 id="did-you-forget-to--">Did You Forget to &hellip; ?</h2>
+<p><code>terraform get --update</code></p>
+<p>If you updated your modules, then you may need to run this command to get the updated code added into the <code>.terraform</code> directory. Running <code>terraform get</code> alone will not pull in the updated code if the module already exists in the <code>.terraform</code> dir.  See the <a href="https://www.terraform.io/docs/commands/get.html">TF get command&rsquo;s docs</a> for more info.</p>
+<p><code>terraform init --upgrade</code></p>
+<p>If you made changes to your working directory&rsquo;s configuration, then you&rsquo;ll need to include the <code>--upgrade</code> flag in order to pull in the latest versions of your plugins and modules. For example, you may want the latest version of a provider to be installed.</p>
+<p>See the <a href="https://www.terraform.io/docs/commands/init.html">TF init command&rsquo;s docs</a> for more info.</p>
+<h2 id="debugging">Debugging</h2>
+<p>When you&rsquo;re stuck using typical dev &amp; test methods, it&rsquo;s time to turn on Terraform debugging! This is fairly easy to do with these 2 commands:</p>
+<pre tabindex="0"><code>export TF_LOG=DEBUG
+export TF_LOG_PATH=/tmp/tf.debug.txt
+</code></pre><p>This will log debug-level output to the <code>/tmp/tf.debug.txt</code> file, which you can point to a file and location of your choice.</p>
+<p>When you&rsquo;re done, you can turn off debugging with these commands:</p>
+<pre tabindex="0"><code>unset TF_LOG
+</code></pre><p>Next, if <code>terraform apply</code> is returning a vague or seemingly nonsensical error, try creating the same cloud resources using the provider&rsquo;s CLI. You may be hitting some limitation with the provider and/or your account. Attempting to create the resources using the CLI may spit back more useful error messages. Sometimes the Go SDK (that Terraform uses to talk to the cloud providers) has bugs that prevent a useful error from being passed through.</p>
+<h2 id="developing-tricky-code">Developing Tricky Code</h2>
+<p>If your project is particularly involved and you&rsquo;re trying to add a complex piece of Terraform code, for example an interpolation, then <a href="https://www.terraform.io/docs/commands/console.html"><code>terraform console</code></a> can be your best friend.</p>
+<p>Here&rsquo;s how you would set it up:</p>
+<p>Switch to a sandbox directory and create one (1) or more <code>*.tf</code> files and/or a <code>terraform.tfvars</code> file with whatever variables you need.</p>
+<p>For example, you could have:</p>
+<p><code>test.tf</code>:</p>
+<pre tabindex="0"><code>variable a {}
+variable b { default = 5 }
+</code></pre><p><code>terraform.tfvars</code>:</p>
+<pre tabindex="0"><code>a = &#34;blah&#34;
+</code></pre><p>Now you can run <code>terraform console</code> <em>in that directory</em>:</p>
+<pre tabindex="0"><code>$ terraform console
+&gt; var.a
+blah
+&gt; var.b
+5
+&gt; var.a * pow( 2, 4 )
+80
+&gt; &#34;${var.a * pow( 2, 4 )}&#34;
+80
+</code></pre><h2 id="other-useful-commands">Other Useful Commands</h2>
+<p><code>terraform validate</code></p>
+<p>This is a quick way to ensure that your syntax is good and that all of your variables are declared. However, it won&rsquo;t detect where you have underlying issues or missing dependencies in your target environment.</p>
+<p><code>terraform graph</code></p>
+<p>At some point, your code will become more complex and you will have dependencies amongst your resources. In general, you&rsquo;ll want to have implicit dependencies such that Terraform builds resources in a certain order.</p>
+<p>For example, in AWS, if you&rsquo;re building an EC2 instance that is referencing a Security Group that you&rsquo;re also building in the same code, the EC2 instance must implicitly reference the SG or you may end up with an error saying that the SG does not exist.</p>
+<p>Viewing the graph of your code will verify whether or not you actually have that dependency.</p>
+<p><code>terraform-docs</code></p>
+<p>This is a 3rd-party tool that generates documentation (Markdown or JSON) from the comments and the variables in your code. You can <em>Brew</em> this up on a Mac or snag it from <a href="https://github.com/segmentio/terraform-docs">its GitHub repo</a>.</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.terraform.io/docs/configuration-0-11/interpolation.html">Terraform Interpolation documentation</a>. # For any pre-v0.12 code, this is probably the page where I spend the most time. For v0.12, you&rsquo;ll want to check out the <a href="https://www.terraform.io/docs/configuration/expressions.html">Expressions docs</a></li>
+<li>The <a href="https://groups.google.com/forum/#!forum/terraform-tool">Terraform user group/mailing list</a> is a great place to ask for help.</li>
+<li>If you&rsquo;re an IRCer, you can jump into the <a href="https://gitter.im/hashicorp-terraform/Lobby">Gitter channel</a>.</li>
+<li><a href="https://stackoverflow.com/questions/tagged/terraform">StackOverflow</a> is also quite helpful.</li>
+<li>If you&rsquo;re confident you&rsquo;ve found an issue or want to request a new feature, head to the <a href="https://github.com/hashicorp/terraform/issues/">GitHub issues list</a>.</li>
+</ul>
+
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+<div class="aside__about">
+    
+    
+<h1 class="about__title">David Cunliffe</h1>
+<p class="about__description">Cloud Consultant</p>
+</div>
+
+
+<ul class="aside__social-links">
+    
+    <li>
+        <a href="https://github.com/davidccunliffe/blog" rel="me" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="mailto:davidccunliffe@gmail.com" rel="me" aria-label="Email" title="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    
+    
+        <p>
+            
+            2021-10-01
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+    
+    
+      
+      
+          
+            
+            
+                <br/><span class="active">$ echo $LANG<br/><b></b></span><br/>
+
+            
+          
+      
+    
+</p>
+<br /><br />
+<p class="copyright">© <a href="https://blog.davidccunliffe.com">David Cunliffe</a></p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

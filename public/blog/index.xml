@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Over Engineered</title>
+    <link>https://blog.davidccunliffe.com/blog/</link>
+    <description>Recent content in Blogs on Over Engineered</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>© [David Cunliffe](https://blog.davidccunliffe.com)</copyright>
+    <lastBuildDate>Tue, 22 Feb 2022 17:45:18 -0400</lastBuildDate>
+    <atom:link href="https://blog.davidccunliffe.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Authentication of Users &amp; Apps to Google Cloud for Local Workstation Development</title>
+      <link>https://blog.davidccunliffe.com/blog/2022-02-gcp-auth/</link>
+      <pubDate>Tue, 22 Feb 2022 17:45:18 -0400</pubDate>
+      <guid>https://blog.davidccunliffe.com/blog/2022-02-gcp-auth/</guid>
+      <description>&lt;p&gt;If you are developing code (on your workstation) to interact with the Google Cloud Platform (GCP) using either the Google Cloud SDK Command Line Tools (i.e. gcloud) and/or the Google Cloud Client Libraries, then you&amp;rsquo;ll need to authenticate first.&lt;/p&gt;&#xA;&lt;p&gt;This article was inspired by the excellent explanatory &lt;a href=&#34;https://codeburst.io/google-cloud-authentication-by-example-1481b02292e4&#34;&gt;how-to article created by John Tucker&lt;/a&gt;, and is essentially a &amp;lsquo;cheat-sheet&amp;rsquo; version for that how-to.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Note that this article does not cover how to authenticate when you or your proxy is inside GCP or in another environment.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Terraform Tips and Tricks</title>
+      <link>https://blog.davidccunliffe.com/blog/2021-10-terraform-tips-and-tricks/</link>
+      <pubDate>Fri, 01 Oct 2021 10:23:05 -0400</pubDate>
+      <guid>https://blog.davidccunliffe.com/blog/2021-10-terraform-tips-and-tricks/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;em&gt;Update, Feb 2019&lt;/em&gt;: Note that with the imminent release of Terraform v0.12, some of the advice, commands, etc. in this article may not apply or work any more.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Having used Hashicorp&amp;rsquo;s Terraform since 2016, I&amp;rsquo;ve collected a set of tips and tricks around developing and debugging Terraform code.&lt;/p&gt;&#xA;&lt;h2 id=&#34;version-pinning&#34;&gt;Version Pinning&lt;/h2&gt;&#xA;&lt;p&gt;Even at 4+ yrs old, Terraform is still not even at version 1.0. However, along the way even the minor releases have had major&amp;ndash;and many times breaking&amp;ndash;changes. For that reason, I&amp;rsquo;ve always strongly recommended that one pins their code to at least the minor version # (e.g. 0.11.x), and Terraform has a mechanism to do this. E.g.:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

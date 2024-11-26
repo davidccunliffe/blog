@@ -2,10 +2,13 @@
 date = '2024-11-25T21:53:45-05:00'
 draft = false
 title = 'Init'
+weight = 2
 +++
 
 Hey all this is my first blog post. The concept of this blog is to educate and show a glimpse of my day to day. I hope to produce content at least weekly to get started.
+
 Will be covering different technology aspects centered around DevOps and Cloud Services. The other will be around general automation tools and services I use to gear up for an engagement.
+
 If your interested in following along on other platforms.
 
 * [Linkedin](https://www.linkedin.com/in/davidccunliffe/)

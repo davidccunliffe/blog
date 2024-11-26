@@ -4,8 +4,17 @@ button: 'About us'
 weight: 2
 ---
 
-Hi, my name is David Cunliffe. I have been interested in computers and software since I learned BASIC in the early 1990’s. I took up hobbyist computing and learned about software programming, hardware hacking, BBS’s, and this wonderful thing called electronic mail.
+Hi, my name is David Cunliffe. Welcome to my technical blog where I'll be discussing various projects I've been working on over the years.
 
-After high school, I became interested in the newly commercialized Internet that promised to change the world. I started my first job working for AOL and CompuServe and have been in and out of IT since. I recently started to do consulting a few years back and web hosting in the early days of the Internet. The Internet has indeed changed the world since those early days in the 90’s. Along the way, I’ve worked for all manner of businesses as both an employee and a consultant, providing advice, mentoring, and software programming services. I have had a great time so far, and I am looking forward to what comes next. I hope the things that I post here help you with your journey.
+I've worked for all sizes of companies, from small to medium business up to fortune 50 companies, ranging from DevOps deliveries up to full
+blown architecture work designing large scale foundational systems within both AWS and GCP.
 
-I specialize in designing and building infrastructure using a variety of technologies and cloud based platforms. You can see a small sampling of my skills and experience right here in my blog. I provide technology and software consulting services through 2nd Watch, Inc to which opinions are my own and not the views of my employer. If you are interested in my services, please send me a message and I will reply promptly.
+My passion is was networking in technology for many years. I enjoy learning about virtualization technologies such as VMware, Proxmox, Docker, and my latest adventures have been within Kubernetes. I've worked work closely with on-premise tech for the first part of my technology career.
+Over the last decade I've spent most of my time developing my cloud based infrastructure skills to aid in the virtual world. 
+
+My primary goal is to become a multi-cloud Architect which can bring my experience to my clients. Ultimately working my way into a position that
+will support my long term goals. I spent most of my life working in non-profit and disability when I started in the job market. Most of the folks
+in this industry have to rely on donations or support from companies. I want to be there to help with my connections and technology understanding
+to support their causes. 
+
+While my experience is diverse, I'm always looking for feedback to improve on my own internal processes. I've worked with some exceptional people and completed some insaine projects. I hope to take you on a similar ride through my blogging experience. So please contact me if you would like to have be review any new and exciting technology that your having trouble understanding.

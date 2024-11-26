@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head><title>Authentication of Users &amp; Apps to Google Cloud for Local Workstation Development &ndash; Over Engineered</title>
+<meta name="description" content="Cloud Consultant">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="https://blog.davidccunliffe.com/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://blog.davidccunliffe.com/css/risotto.css">
+<link rel="stylesheet" href="https://blog.davidccunliffe.com/css/custom.css">
+
+
+
+
+
+
+
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+      <li class="nomarker"><h1 class="page__logo"><a href="https://blog.davidccunliffe.com/" class="page__logo-inner">Over Engineered</a></h1></li>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://blog.davidccunliffe.com/about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item active" href="https://blog.davidccunliffe.com/blog/" title="Blogs">Blogs</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>Authentication of Users &amp; Apps to Google Cloud for Local Workstation Development</h1>
+    </header>
+    <div class="content__body">
+        <p>If you are developing code (on your workstation) to interact with the Google Cloud Platform (GCP) using either the Google Cloud SDK Command Line Tools (i.e. gcloud) and/or the Google Cloud Client Libraries, then you&rsquo;ll need to authenticate first.</p>
+<p>This article was inspired by the excellent explanatory <a href="https://codeburst.io/google-cloud-authentication-by-example-1481b02292e4">how-to article created by John Tucker</a>, and is essentially a &lsquo;cheat-sheet&rsquo; version for that how-to.</p>
+<blockquote>
+<p>Note that this article does not cover how to authenticate when you or your proxy is inside GCP or in another environment.</p>
+</blockquote>
+<h2 id="two-2-sets-of-tools">Two (2) Sets of Tools</h2>
+<p>The first very important thing to note is that there these 2 sets of tools are authenticated separately.</p>
+<ol>
+<li>
+<p>Google Cloud SDK Command Line Tools:
+The gcloud CLI manages authentication, local configuration, developer workflow, interactions with Google Cloud APIs.</p>
+</li>
+<li>
+<p>Google Cloud Client Libraries are the recommended language-specific libraries for calling Google Cloud APIs.</p>
+</li>
+</ol>
+<h2 id="two-2-types-of-accounts">Two (2) Types of Accounts</h2>
+<p>There are two (2) different types of accounts that can be authenticated: User and Service Accounts.</p>
+<ol>
+<li>
+<p>User accounts are managed as Google Accounts, and they represent a developer, administrator, or any other person who interacts with Google Cloud. They are intended for scenarios where your application needs to access resources on behalf of a human user.</p>
+</li>
+<li>
+<p>Service accounts are managed by IAM, and they represent non-human users. They are intended for scenarios where your application needs to access resources or perform actions on its own, such as running App Engine apps or interacting with Compute Engine instances.</p>
+</li>
+</ol>
+<h3 id="impersonation">Impersonation</h3>
+<p>Another possible wrench option is where one account can impersonate another. E.g., a user impersonating a Service Account or even one
+service account impersonating another service account.</p>
+<h2 id="scenarios">Scenarios</h2>
+<p>There are different scenarios where you may need to use some combination of authentication for either <em>gcloud</em> or Cloud Client Libraries with either a user or service account.</p>
+<h3 id="scenario-1-authenticating-as-a-user-in-order-to-use-gcloud-tools">Scenario #1: Authenticating as a user in order to use gcloud tools</h3>
+<pre tabindex="0"><code>$ gcloud auth login
+</code></pre><h3 id="scenario-2-authenticating-as-a-user-in-order-to-use-client-libraries">Scenario #2: Authenticating as a user in order to use client libraries</h3>
+<pre tabindex="0"><code>$ gcloud auth application-default login [--project &lt;project_name&gt;]
+</code></pre><h3 id="scenario-3-authenticating-as-a-service-account-in-order-to-use-gcloud-tools">Scenario #3: Authenticating as a Service Account in order to use gcloud tools</h3>
+<p>First create and download a key for the service account (JSON format). Note: for security reasons, your organization may have set a policy to prevent this behavior.</p>
+<pre tabindex="0"><code>$ gcloud auth activate-service-account &lt;svc_acct_email_id&gt; --key-file=&lt;svc_acct_key.json&gt;
+</code></pre><h3 id="scenario-4-authenticating-as-a-service-account-in-order-to-use-client-libraries">Scenario #4: Authenticating as a Service Account in order to use client libraries</h3>
+<p>To authenticate as a service account, set the environment variable, <code>GOOGLE_APPLICATION_CREDENTIALS</code>, with its value set to the path to the downloaded JSON file.</p>
+<pre tabindex="0"><code> $ export GOOGLE_APPLICATION_CREDENTIALS=/home/user/documents/&lt;svc_acct_key.json&gt;
+</code></pre><h3 id="scenario-5-user-impersonating-a-service-account-in-order-to-use-gcloud-tools">Scenario #5: User impersonating a Service Account in order to use gcloud tools</h3>
+<p>First authenticate as the user (like in Scenario #1), then use the auth/impersonate_service_account configuration setting.</p>
+<pre tabindex="0"><code>$ gcloud auth login
+$ gcloud config set auth/impersonate_service_account &lt;svc_acct_email_id&gt;
+</code></pre><h3 id="scenario-6-user-impersonating-a-service-account-in-order-to-use-client-libraries">Scenario #6: User impersonating a Service Account in order to use client libraries</h3>
+<p>Ensure that <code>GOOGLE_APPLICATION_CREDENTIALS</code> is not set, and that there is no user account auth:</p>
+<pre tabindex="0"><code>$ unset GOOGLE_APPLICATION_CREDENTIALS
+$ gcloud auth application-default revoke
+</code></pre><p>Create a short-lived Access Token:</p>
+<p><code>export ACCESS_TOKEN=$(gcloud auth print-access-token --impersonate-service-account &lt;svc_acct_email_id&gt;)</code></p>
+<p>Finally, in your code, you will need to reference the <code>ACCESS_TOKEN</code> and use that in creating your OAuth2 credentials parameter. Here is some <a href="https://gist.github.com/larkintuckerllc/d7d885301085c77cfd0fb33715bca67f#file-gc_sdk-py">sample Python code</a> that is listing the storage buckets:</p>
+<script src="https://gist.github.com/larkintuckerllc/d7d885301085c77cfd0fb33715bca67f.js"></script>
+
+<h2 id="references">References</h2>
+<ul>
+<li>Very thorough tutorial on authenticating to GCP w/ user and svc accounts:<br>
+<a href="https://codeburst.io/google-cloud-authentication-by-example-1481b02292e">https://codeburst.io/google-cloud-authentication-by-example-1481b02292e</a></li>
+<li>gcloud auth application-default login<br>
+<a href="https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login">https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login</a></li>
+<li>How to create short-lived Service Account credentials:<br>
+<a href="https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials">https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials</a></li>
+<li>IAM Permissions Reference (searchable):<br>
+<a href="https://cloud.google.com/iam/docs/permissions-reference">https://cloud.google.com/iam/docs/permissions-reference</a></li>
+</ul>
+<h2 id="related">Related</h2>
+<p>A role is grantable on or above a resource if it contains any permissions for that resource type. <a href="https://cloud.google.com/iam/docs/viewing-grantable-roles#iam-grantable-roles-console">More details</a> in the GCP docs.</p>
+
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+<div class="aside__about">
+    
+    
+<h1 class="about__title">David Cunliffe</h1>
+<p class="about__description">Cloud Consultant</p>
+</div>
+
+
+<ul class="aside__social-links">
+    
+    <li>
+        <a href="https://github.com/davidccunliffe/blog" rel="me" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="mailto:davidccunliffe@gmail.com" rel="me" aria-label="Email" title="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    
+    
+        <p>
+            
+            2022-02-22
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+    
+    
+      
+      
+          
+            
+            
+                <br/><span class="active">$ echo $LANG<br/><b></b></span><br/>
+
+            
+          
+      
+    
+</p>
+<br /><br />
+<p class="copyright">© <a href="https://blog.davidccunliffe.com">David Cunliffe</a></p>
+</footer>
+
+        </div>
+    </body>
+
+</html>
